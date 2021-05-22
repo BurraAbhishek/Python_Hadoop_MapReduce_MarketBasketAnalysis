@@ -10,3 +10,5 @@ Please refer to the [wiki](https://github.com/BurraAbhishek/Python_Hadoop_MapRed
 ## NOTE:
 This implementation is newly created
 
+## References
+1. Woo, J. (2013). Market basket analysis algorithms with mapreduce. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 3(6), 445-452.
