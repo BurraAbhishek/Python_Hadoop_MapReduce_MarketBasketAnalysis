@@ -2,6 +2,17 @@ import sys
 import itertools
 
 
+def getItemsetLength():
+    try:
+        with open("apriori_settings.json", "r") as j:
+            configs = json.load(j)
+        setlength = configs["itemset-length"]
+    except:
+        # Use pairs if no permitted value
+        setlength = 2
+    return setlength
+
+
 def mapper(n):
     """ Emits k itemsets of the form <item, count> from a dataset """
 
@@ -30,5 +41,5 @@ def mapper(n):
             # Print all the key-value pair combinations
             print(finaldatasubset)
 
-# Test case
-mapper(2)
+# Running the mapper code
+mapper(getItemsetLength())
