@@ -19,8 +19,8 @@ current_count = 0
 word = None
 minconfidence = getMinConfidence()
 addeditems = []
+rejecteditems = []
 items = []
-selected = []
 
 for line in sys.stdin:
     datasubset = ast.literal_eval(line)
@@ -36,10 +36,29 @@ for line in sys.stdin:
                 if items[j] == itemset:
                     addeditems[j][1] += 1
 
+# Filter frequent item(sets)
 for i in addeditems:
     if i[1] >= minconfidence:
-        isSelected = True
-    else:
-        isSelected = False
-    if isSelected:
         print(i)
+    else:
+        rejecteditems.append(i[0])
+
+# Get list of discarded items
+try:
+    f = open("discardeditems.txt", "w")
+    f.write(str(rejecteditems))
+    f.close()
+except:
+    f = 0
+
+# Prepare for the next pass
+try:
+    with open("apriori_settings.json", "r") as j:
+        configs = json.load(j)
+    configs["itemset-length"] += 1
+    f = open("apriori_settings.json", "w")
+    json.dump(configs, f, indent=4)
+    f.close
+except:
+    f = 0
+
