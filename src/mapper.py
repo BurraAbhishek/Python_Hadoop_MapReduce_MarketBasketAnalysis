@@ -23,12 +23,8 @@ def mapper(n):
         datasubset = []
         uniquedata = []
         for word in words:
-            # Step 2: Map duplicates
-            if word in uniquedata:
-                for i in range(0, len(datasubset)):
-                    if word == datasubset[i][0]:
-                        datasubset[i][1] += 1
-            else:
+            # Step 2: Remove duplicates
+            if word not in uniquedata:
                 datasubset.append([word, 1])
                 uniquedata.append(word)
         # Step 3: Sort the dataset to avoid duplicated keys
