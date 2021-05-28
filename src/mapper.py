@@ -1,6 +1,25 @@
 import sys
 import itertools
+import ast
 import json
+
+
+def getDiscardedItems():
+    try:
+        f = open("discardeditems.txt", "r")
+        s = f.read()
+        f.close()
+        discarded = ast.literal_eval(s)
+    except:
+        discarded = []
+    return discarded
+
+
+def checkIfSubset(l, s):
+    """ Check if list s is a subset of list l """
+
+    result = s in itertools.chain(*l)
+    return result
 
 
 def getItemsetLength():
@@ -23,6 +42,7 @@ def mapper(n):
         words = line.split(",")
         datasubset = []
         uniquedata = []
+        discarded = getDiscardedItems()
         for word in words:
             # Step 2: Remove duplicates
             if word not in uniquedata:
@@ -32,7 +52,18 @@ def mapper(n):
         datasubset.sort()
         # Step 4: Combine the items within a single transaction
         if len(datasubset) > 0:
-            finaldatasubset = list(itertools.combinations(datasubset, n))
+            intermediate_datasubset = list(itertools.combinations(datasubset, n))
+        # Step 5: Remove all infrequent item(sets)
+        infrequent_deleted = True
+        for i in discarded:
+            i.append(1)
+            i = list(i)
+            if checkIfSubset(intermediate_datasubset, i):
+                infrequent_deleted = False
+        if infrequent_deleted:
+            finaldatasubset = intermediate_datasubset
+        else:
+            finaldatasubset = []
         # Dataset is created as an input to reducer and passed sequentially
         if len(finaldatasubset) > 0:
             # Print all the key-value pair combinations
