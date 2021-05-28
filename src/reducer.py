@@ -30,17 +30,16 @@ for line in sys.stdin:
             itemset.append(j[0])
         if itemset not in items:
             items.append(itemset)
-            addeditems.append(i)
+            addeditems.append([itemset, 1])
         else:
             for j in range(0, len(items)):
                 if items[j] == itemset:
-                    for k in range(0, len(i)):
-                        addeditems[j][k][1] += i[k][1]
+                    addeditems[j][1] += 1
 
 for i in addeditems:
-    isSelected = True
-    for j in i:
-        if j[1] < minconfidence:
-            isSelected = False
+    if i[1] >= minconfidence:
+        isSelected = True
+    else:
+        isSelected = False
     if isSelected:
         print(i)
