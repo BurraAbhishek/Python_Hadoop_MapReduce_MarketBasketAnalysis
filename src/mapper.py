@@ -6,7 +6,6 @@ def mapper(n):
     """ Emits k itemsets of the form <item, count> from a dataset """
 
     # Step 1: Generate the dataset
-    finaldataset = []
     for line in sys.stdin:
         line = line.strip()
         words = line.split(",")
@@ -26,11 +25,10 @@ def mapper(n):
         # Step 4: Combine the items within a single transaction
         if len(datasubset) > 0:
             finaldatasubset = list(itertools.combinations(datasubset, n))
-            if len(finaldatasubset) > 0:
-                finaldataset.append(finaldatasubset)
-    # Dataset is created as an input to reducer
-        print(datasubset)
+        # Dataset is created as an input to reducer and passed sequentially
+        if len(finaldatasubset) > 0:
+            # Print all the key-value pair combinations
+            print(finaldatasubset)
 
 # Test case
 mapper(2)
-
