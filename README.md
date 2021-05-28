@@ -2,7 +2,8 @@
 Market Basket Analysis using Hadoop MapReduce in Python (Implementation currently finds itemsets of a fixed length 'k' which occur at least 'n' times)
 
 ## Description:
-This section will be added soon
+This section will be added soon.
+The code is located in the src folder.
 
 ## Setup:
 Please refer to the [wiki](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki) of this repository
