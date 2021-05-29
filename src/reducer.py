@@ -38,27 +38,10 @@ for line in sys.stdin:
 
 # Filter frequent item(sets)
 for i in addeditems:
-    if i[1] >= minconfidence:
-        print(i)
+    if i[1] < minconfidence:
+        print("frequent" + '\t' + str(i))
     else:
         rejecteditems.append(i[0])
 
-# Get list of discarded items
-try:
-    f = open("discardeditems.txt", "w")
-    f.write(str(rejecteditems))
-    f.close()
-except:
-    f = 0
-
-# Prepare for the next pass
-try:
-    with open("apriori_settings.json", "r") as j:
-        configs = json.load(j)
-    configs["itemset-length"] += 1
-    f = open("apriori_settings.json", "w")
-    json.dump(configs, f, indent=4)
-    f.close
-except:
-    f = 0
-
+# Print all discarded item(sets)
+print("discarded" + '\t' + str(rejecteditems))
