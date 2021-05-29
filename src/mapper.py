@@ -6,7 +6,7 @@ import json
 
 def getDiscardedItems():
     try:
-        f = open("discardeditems.txt", "r")
+        f = open("part-00000", "r")
         s = f.read()
         f.close()
         discarded = ast.literal_eval(s)
