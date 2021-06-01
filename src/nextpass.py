@@ -14,5 +14,5 @@ try:
     json.dump(configs, f, indent=4)
     f.close()
 except:
-    # Do something else
-    f = 0
+    # Print error message
+    print("Couldn't go to next pass")
