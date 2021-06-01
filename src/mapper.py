@@ -44,24 +44,24 @@ def mapper(n):
         uniquedata = []
         discarded = getDiscardedItems()
         for word in words:
-            # Step 2: Remove duplicates
-            if word not in uniquedata:
+            # Step 2: Remove duplicates and empty words
+            if word not in uniquedata and len(word) > 0:
                 datasubset.append([word, 1])
                 uniquedata.append(word)
         # Step 3: Sort the dataset to avoid duplicated keys
         datasubset.sort()
         # Step 4: Combine the items within a single transaction
         if len(datasubset) > 0:
-            intermediate_datasubset = list(itertools.combinations(datasubset, n))
+            draft_datasubset = list(itertools.combinations(datasubset, n))
         # Step 5: Remove all infrequent item(sets)
         infrequent_deleted = True
         for i in discarded:
             i.append(1)
             i = list(i)
-            if checkIfSubset(intermediate_datasubset, i):
+            if checkIfSubset(draft_datasubset, i):
                 infrequent_deleted = False
         if infrequent_deleted:
-            finaldatasubset = intermediate_datasubset
+            finaldatasubset = draft_datasubset
         else:
             finaldatasubset = []
         # Dataset is created as an input to reducer and passed sequentially
