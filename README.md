@@ -2,7 +2,12 @@
 Market Basket Analysis using Hadoop MapReduce in Python (Implementation currently finds itemsets of a fixed length 'k' which occur at least 'n' times)
 
 ## Acknowledgements
-I would like to express my special thanks to Dr. Bharadwaja Kumar and Dr. Ramesh Ragala for providing me with valuable inputs required to complete this project.
+I wish to express my sincere thanks and deep sense of gratitude to our project guide, Dr. Bharadwaja Kumar, Professor, SCSE, for his consistent encouragement and valuable guidance offered to me in a pleasant manner throughout the course of the project work. I are extremely grateful to the Dean of the SENSE, VIT Chennai, for extending the facilities of the School towards our project and for the unstinting support. 
+
+I also take this opportunity to thank all the faculty of the School for their support and their wisdom imparted to us throughout the course. 
+
+I thank our parents, family, and friends for bearing with us throughout the course of our project and for the opportunity they provided us in undergoing this course in such a prestigious institution. 
+
 I would also like to thank [SSaikia_JtheRocker](https://stackoverflow.com/users/633970/ssaikia_jtherocker) for his [answer](https://stackoverflow.com/a/18562328)
  in Stack Overflow which helped me in executing the code for k-pass algorithm.
 
