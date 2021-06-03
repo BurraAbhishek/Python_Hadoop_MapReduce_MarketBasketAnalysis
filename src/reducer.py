@@ -21,16 +21,17 @@ addeditems = []
 items = []
 
 for line in sys.stdin:
-    # Convert input into list
-    datasubset = ast.literal_eval(line)
+    # Split the input
+    combination, count = line.split("\t")
+    count = int(count.replace("\n", ""))
     # Processing first occurrence of itemset
-    if datasubset[0] not in items:
-        items.append(datasubset[0])
-        addeditems.append(datasubset)
+    if combination not in items:
+        items.append(combination)
+        addeditems.append([combination, count])
     # Processing repeated occurrence of itemset
     else:
         for i in range(0, len(items)):
-            if items[i] == datasubset[0]:
+            if items[i] == combination:
                 addeditems[i][1] += 1
 
 
