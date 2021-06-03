@@ -12,7 +12,7 @@ try:
     json.dump(configs, f, indent=4)
     f.close()
     # Reset the list of discarded items to an empty list.
-    o = open("part-00000", "w")
+    o = open("discarded_items.txt", "w")
     o.write("[]")
     o.close()
 except:
