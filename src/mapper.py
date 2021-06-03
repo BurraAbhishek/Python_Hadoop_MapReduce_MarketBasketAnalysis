@@ -5,8 +5,10 @@ import json
 
 
 def getDiscardedItems():
+    """ Get the list of discarded items """
+
     try:
-        f = open("part-00000", "r")
+        f = open("discarded_items.txt", "r")
         s = f.read()
         f.close()
         discarded = ast.literal_eval(s)
@@ -16,13 +18,18 @@ def getDiscardedItems():
 
 
 def checkIfSubset(l, s):
-    """ Check if list s is a subset of list l """
+    """ Check if list s is a subset of nested list l """
 
-    result = s in itertools.chain(*l)
+    result = False
+    for i in s:
+        if set(i).issubset(set(l)):
+            result = True
     return result
 
 
 def getItemsetLength():
+    """ Get the length of each itemset combination """
+
     try:
         with open("apriori_settings.json", "r") as j:
             configs = json.load(j)
@@ -36,38 +43,29 @@ def getItemsetLength():
 def mapper(n):
     """ Emits k itemsets of the form <item, count> from a dataset """
 
-    # Step 1: Generate the dataset
+    # Step 1: Get list of discarded items
+    discarded = getDiscardedItems()
+    # Step 2: Generate a stream of transactions from the CSV dataset
     for line in sys.stdin:
         line = line.strip()
         words = line.split(",")
         datasubset = []
-        uniquedata = []
-        discarded = getDiscardedItems()
         for word in words:
-            # Step 2: Remove duplicates and empty words
-            if word not in uniquedata and len(word) > 0:
-                datasubset.append([word, 1])
-                uniquedata.append(word)
-        # Step 3: Sort the dataset to avoid duplicated keys
+            # Step 3: Remove duplicates and empty words
+            if word not in datasubset and len(word) > 0:
+                datasubset.append(word)
+        # Step 4: Sort the dataset to avoid duplicated keys
         datasubset.sort()
-        # Step 4: Combine the items within a single transaction
+        # Step 5: Combine the items within a single transaction
         if len(datasubset) > 0:
-            draft_datasubset = list(itertools.combinations(datasubset, n))
-        # Step 5: Remove all infrequent item(sets)
-        infrequent_deleted = True
-        for i in discarded:
-            i.append(1)
-            i = list(i)
-            if checkIfSubset(draft_datasubset, i):
-                infrequent_deleted = False
-        if infrequent_deleted:
-            finaldatasubset = draft_datasubset
-        else:
-            finaldatasubset = []
+            finaldatasubset = list(itertools.combinations(datasubset, n))
         # Dataset is created as an input to reducer and passed sequentially
         if len(finaldatasubset) > 0:
-            # Print all the key-value pair combinations
-            print(finaldatasubset)
+            # Print all key-value pair combinations not discarded
+            for i in finaldatasubset:
+                if len(i) > 0 and not IsSubset(i, discarded):
+                    # To avoid problems in reducer, tab delimiter not used
+                    print([i, 1])
 
 # Running the mapper code
 mapper(getItemsetLength())
