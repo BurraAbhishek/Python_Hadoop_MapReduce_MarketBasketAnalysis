@@ -64,8 +64,7 @@ def mapper(n):
             # Print all key-value pair combinations not discarded
             for i in finaldatasubset:
                 if len(i) > 0 and not IsSubset(i, discarded):
-                    # To avoid problems in reducer, tab delimiter not used
-                    print([i, 1])
+                    print("%s\t%s" % (str(i), 1))
 
 # Running the mapper code
 mapper(getItemsetLength())
