@@ -1,43 +1,37 @@
-from operator import itemgetter
 import ast
 import sys
 import json
 
 
 def getMinConfidence():
+    """ Get the minimum number of transaction occurrence for each itemset """
+
     try:
         with open("apriori_settings.json", "r") as j:
             configs = json.load(j)
         minconfidence = configs["minimum-support"]
     except:
-        # A reasonable user-defined value
+        # A user-defined value
         minconfidence = 5
     return minconfidence
 
-current_word = None
-current_count = 0
-word = None
+
 minconfidence = getMinConfidence()
 addeditems = []
-rejecteditems = []
 items = []
 
 for line in sys.stdin:
     # Convert input into list
     datasubset = ast.literal_eval(line)
-    for i in datasubset:
-        itemset = []
-        for j in i:
-            itemset.append(j[0])
-        # Processing new itemset
-        if itemset not in items:
-            items.append(itemset)
-            addeditems.append([itemset, 1])
-        # Combining processed itemset.
-        else:
-            for j in range(0, len(items)):
-                if items[j] == itemset:
-                    addeditems[j][1] += 1
+    # Processing first occurrence of itemset
+    if datasubset[0] not in items:
+        items.append(datasubset[0])
+        addeditems.append(datasubset)
+    # Processing repeated occurrence of itemset
+    else:
+        for i in range(0, len(items)):
+            if items[i] == datasubset[0]:
+                addeditems[i][1] += 1
 
 
 # Prepare to output list of discarded items
