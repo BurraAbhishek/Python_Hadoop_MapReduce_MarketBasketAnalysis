@@ -34,16 +34,9 @@ for line in sys.stdin:
             if items[i] == combination:
                 addeditems[i][1] += 1
 
-
-# Prepare to output list of discarded items
-print("discarded" + '\t' + '[')
-
 # Filter frequent item(sets)
 for i in addeditems:
     if i[1] < minconfidence:
         print("frequent" + '\t' + str(i))
     else:
         print("discarded" + '\t' + str(i[0]) + ',')
-
-# Complete the list of discarded items
-print("discarded" + '\t' + ']')
