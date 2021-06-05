@@ -36,7 +36,7 @@ for line in sys.stdin:
 
 # Filter frequent item(sets)
 for i in addeditems:
-    if i[1] < minconfidence:
+    if i[1] > minconfidence:
         print("frequent" + '\t' + str(i))
     else:
         print("discarded" + '\t' + str(i[0]) + ',')
