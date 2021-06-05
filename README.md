@@ -12,8 +12,14 @@ I would also like to thank [SSaikia_JtheRocker](https://stackoverflow.com/users/
  in Stack Overflow which helped me in executing the code for k-pass algorithm.
 
 ## Description:
-This section will be added soon.
-The code is located in the src folder.
+Frequent itemset mining is generally used in retail stores to determine the likelihood of customers buying a given set of items. Retail store owners can maximize their profits if they have more stocks of frequently bought items and itemsets. It works by determining the frequency of purchasing an item or a set of items across various transactions.
+
+Hadoop MapReduce is designed to process big data by splitting large files into blocks and splitting them across nodes in a cluster. The data is processed through the nodes in parallel. MapReduce algorithms are generally faster than conventional supercomputing models due to the advantage of data locality, where individual nodes process the data stored in them. Conventional supercomputing, in contrast, relies on high-speed networking. In a MapReduce program, the map function converts a given data into a set of <key, value> pairs and the reduce function converts the output of the mapper (the <key, value> pairs) into a collection of values.
+
+Hadoop Streaming is included by default in Hadoop distributions. It allows developers to write MapReduce code in various programming languages without being forced to write only Java code to run MapReduce programs. Hadoop Streaming relies on streaming of big data and processing of data using the traditional command-prompt interface (STDIN and STDOUT).
+
+The Apriori algorithm is a multi-pass algorithm. This poses some challenges to conventional Java-based MapReduce programs and bigger challenges to using the streaming MapReduce programs. In a conventional Java MapReduce program, multi-pass algorithms can be configured in the driver program. In streaming MapReduce programs, there is no concept of driver programs. Therefore, we have to run all the passes manually and sequentially. In addition to that, writing configurations and reading from them doesn’t work using the Hadoop Streaming utility. Therefore, additional scripts that write configuration changes are required in addition to the MapReduce code. On Linux, this can be automated because Linux can natively run shell scripts (.sh files). 
+
 
 ## Setup:
 Please refer to this [page](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki/Hadoop-Development-Onboarding-(Linux,-Single-Cluster)) in the wiki of this repository.
