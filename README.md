@@ -16,7 +16,10 @@ This section will be added soon.
 The code is located in the src folder.
 
 ## Setup:
-Please refer to the [wiki](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki) of this repository
+Please refer to this [page](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki/Hadoop-Development-Onboarding-(Linux,-Single-Cluster)) in the wiki of this repository.
+
+## Running the code:
+Please refer to this [page](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki/Experiments:-Running-the-MapReduce-code-(Linux)) in the wiki of this repository.
 
 ## License
 The custom.jar in the source code is licensed under CC-BY-SA 3.0 as described in the [Stack Overflow solution](https://stackoverflow.com/a/18562328) in the acknowledgements section.
