@@ -1,5 +1,7 @@
 # Python_Hadoop_MapReduce_MarketBasketAnalysis
-Market Basket Analysis using Hadoop MapReduce in Python (Implementation currently finds itemsets of a fixed length 'k' which occur at least 'n' times)
+Market Basket Analysis using Hadoop MapReduce in Python
+
+This repository contains the [code](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/tree/main/src) which finds the most frequently occurring item(set)s from a given list of transactions. In addition to that, this repository also contains a [dataset generator](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/tree/main/dataset_generator) which generates JSON and CSV datasets for [affinity analysis](https://en.wikipedia.org/wiki/Affinity_analysis).
 
 ## Acknowledgements
 I wish to express my sincere thanks and deep sense of gratitude to my project guide, Dr. Bharadwaja Kumar, Professor, SCSE, for his consistent encouragement and valuable guidance offered to me in a pleasant manner throughout the course of the project work. I are extremely grateful to the Dean of the SCOPE, VIT Chennai, for extending the facilities of the School towards my project and for the unstinting support. 
