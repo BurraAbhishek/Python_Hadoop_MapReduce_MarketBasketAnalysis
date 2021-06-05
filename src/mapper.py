@@ -17,7 +17,7 @@ def getDiscardedItems():
     return discarded
 
 
-def checkIfSubset(l, s):
+def IsSubset(l, s):
     """ Check if list s is a subset of nested list l """
 
     result = False
