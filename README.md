@@ -30,9 +30,8 @@ Please refer to this [page](https://github.com/BurraAbhishek/Python_Hadoop_MapRe
 Please refer to this [page](https://github.com/BurraAbhishek/Python_Hadoop_MapReduce_MarketBasketAnalysis/wiki/Experiments:-Running-the-MapReduce-code-(Linux)) in the wiki of this repository.
 
 ## License
-The custom.jar in the source code is licensed under CC-BY-SA 3.0 as described in the [Stack Overflow solution](https://stackoverflow.com/a/18562328) in the acknowledgements section.
 
-The rest of the source code is licensed under the terms of the MIT License.
+The source code is licensed under the terms of the MIT License.
 
 ## References
 1. Woo, J. (2013). Market basket analysis algorithms with mapreduce. Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery, 3(6), 445-452.
